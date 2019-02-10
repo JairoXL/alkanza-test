@@ -15,6 +15,9 @@ export default {
 
     degRad(deg) {
         return deg * (Math.PI/180)
-    }
+    },
 
+    addValues(a,b) {
+        return a+b;
+    }
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from '../../assets/img/logo.png';
 import './header.scss';
 
-class Header extends Component {
+export default class Header extends Component {
     render(){
         return(
             <header className="header" >
@@ -10,7 +10,7 @@ class Header extends Component {
                     <div className="container">
                         <div className="navbar-start">
                             <div className="navbar-brand">
-                                <a className="navbar-item" href="https://www.alkanza.us">
+                                <a href={'//www.alkanza.us'}>
                                     <img src={logo} width="112" height="28" alt={'Alkanza'}/>
                                 </a>
                             </div>
@@ -25,6 +25,4 @@ class Header extends Component {
             </header>
         )
     }
-}
-
-export default Header;
+};
