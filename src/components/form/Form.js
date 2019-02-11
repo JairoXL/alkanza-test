@@ -57,19 +57,19 @@ export default class Form extends Component {
         let res = insideRadius.reduce(Calc.addValues, 0) - outRadius.reduce(Calc.addValues, 0);
         this.setState({
             dbDistance: Math.abs(res)
+        }, () => {
+            const mapData = {
+                initial_latitude: this.state.initial_latitude,
+                initial_longitude: this.state.initial_longitude,
+                items: this.state.items,
+                radius: this.state.radius
+            };
+
+            this.props.listData(mapData);
+
+            client.saveData(this.state);
+            // console.log(this.state);
         });
-
-        const mapData = {
-            initial_latitude: this.state.initial_latitude,
-            initial_longitude: this.state.initial_longitude,
-            items: this.state.items,
-            radius: this.state.radius
-        };
-
-        this.props.listData(mapData);
-
-        client.saveData(this.state);
-        console.log(this.state);
 
     };
 
