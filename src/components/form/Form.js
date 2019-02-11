@@ -13,7 +13,7 @@ export default class Form extends Component {
             initial_longitude: '',
             items: [],
             dbDistance: '',
-        }
+        };
     };
 
     centersData = (data) => {
@@ -54,10 +54,15 @@ export default class Form extends Component {
         this.setState({
             dbDistance: Math.abs(res)
         });
-        console.log(Math.abs(res));
-        console.log(this.state);
-        /******* TODO ADD MAP *******/
-        /******* TODO ADD SERVICE INTEGRATION *******/
+
+        const mapData = {
+            initial_latitude: this.state.initial_latitude,
+            initial_longitude: this.state.initial_longitude,
+            items: this.state.items,
+            radius: this.state.radius
+        };
+        this.props.listData(mapData);
+        /******* TODO ADD SERVICE INTEGRATION - SAVE DATA*******/
     };
 
     render(){
@@ -112,7 +117,7 @@ export default class Form extends Component {
                         </div>
                     </div>
                 </form>
-                <div className="dataResult">
+                <div className="dataResult" style={{display: 'none'}}>
                     {JSON.stringify(this.state)}
                 </div>
             </div>
