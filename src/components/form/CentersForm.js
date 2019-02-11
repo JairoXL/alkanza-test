@@ -54,7 +54,7 @@ export default class CentersForm extends Component {
                                 <input className="input" type="text" placeholder="Longitude" name={'longitude'} value={this.state.longitude} onChange={this.handleInputChange}/>
                             </div>
                             <div className="column is-2">
-                                <button type="submit" className="button is-light is-fullwidth" onClick={this.handleAppendData}>Add</button>
+                                <button type="button" className="button is-light is-fullwidth" onClick={this.handleAppendData}>Add</button>
                             </div>
                         </div>
                     </div>
