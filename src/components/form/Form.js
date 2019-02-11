@@ -110,7 +110,7 @@ export default class Form extends Component {
                                 <input className="input" type="text" placeholder="Longitude" name={'initial_longitude'} onChange={this.handleInputChangeForm} value={this.state.initial_longitude}/>
                             </div>
                             <div className="column is-2">
-                                <button type="submit" style={{display: 'block'}} className="button is-light is-fullwidth">Locate</button>
+                                <button type="button" style={{display: 'block'}} className="button is-light is-fullwidth">Locate</button>
                             </div>
                         </div>
                     </div>
