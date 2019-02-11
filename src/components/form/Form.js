@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Centers from './CentersForm';
+import ListData from './ListData';
 import Calc from '../../controller/Calcs';
+import Service from '../../services/Service';
+
+const client = new Service();
 
 export default class Form extends Component {
 
@@ -39,11 +43,11 @@ export default class Form extends Component {
         let insideRadius = [];
         let outRadius = [];
 
-        this.state.items.map((item) => {
+        this.state.items.forEach( item => {
             distances.push(Calc.getDistancePoints(this.state.initial_latitude, this.state.initial_longitude, item.latitude, item.longitude));
         });
 
-        distances.map((distance) => {
+        distances.forEach( distance => {
             if(distance <= this.state.radius)
                 insideRadius.push(distance);
             else
@@ -61,8 +65,12 @@ export default class Form extends Component {
             items: this.state.items,
             radius: this.state.radius
         };
+
         this.props.listData(mapData);
-        /******* TODO ADD SERVICE INTEGRATION - SAVE DATA*******/
+
+        client.saveData(this.state);
+        console.log(this.state);
+
     };
 
     render(){
@@ -85,7 +93,7 @@ export default class Form extends Component {
                                 <label className="label">Radius:</label>
                             </div>
                             <div className="column is-6">
-                                <input className="input" type="number" placeholder="Eg: 10 (Only number) this value is in Km" name={'radius'} onChange={this.handleInputChangeForm} value={this.state.radius}/>
+                                <input className="input" type="number" placeholder="Eg: 10 (Only number) this value is in M" name={'radius'} onChange={this.handleInputChangeForm} value={this.state.radius}/>
                             </div>
                         </div>
                     </div>
@@ -102,7 +110,7 @@ export default class Form extends Component {
                                 <input className="input" type="text" placeholder="Longitude" name={'initial_longitude'} onChange={this.handleInputChangeForm} value={this.state.initial_longitude}/>
                             </div>
                             <div className="column is-2">
-                                <button type="submit" className="button is-light is-fullwidth">Locate</button>
+                                <button type="submit" style={{display: 'block'}} className="button is-light is-fullwidth">Locate</button>
                             </div>
                         </div>
                     </div>
@@ -117,9 +125,11 @@ export default class Form extends Component {
                         </div>
                     </div>
                 </form>
-                <div className="dataResult" style={{display: 'none'}}>
+                <div className="dataResult" style={{display: 'block'}}>
                     {JSON.stringify(this.state)}
                 </div>
+
+                <ListData />
             </div>
         )
     }

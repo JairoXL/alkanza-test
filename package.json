@@ -5,11 +5,10 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bulma": "^0.7.4",
-    "google-maps-react": "^2.0.2",
+    "google-maps-react": "github:fullstackreact/google-maps-react#master",
     "node-sass": "^4.11.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
-    "react-google-maps": "^9.4.5",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.3"
   },

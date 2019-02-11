@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
-import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
-import { Circle } from "react-google-maps";
+import { Map, Marker, GoogleApiWrapper, Circle } from 'google-maps-react';
 
 export class MapRender extends Component {
 
     render() {
+
         const coords = {
             lat: this.props.mapData.lat_init  === undefined ? 4.5822966 : parseFloat(this.props.mapData.lat_init),
             lng: this.props.mapData.lat_init  === undefined ? -74.1355864 : parseFloat(this.props.mapData.lon_init)
         };
 
-        const radius = this.props.mapData.radius === undefined ? 10 : parseFloat(this.props.mapData.radius);
+        const radius = this.props.mapData.radius === undefined ? 5000 : parseFloat(this.props.mapData.radius);
 
-        const markers = this.props.mapData.items === undefined ? null : this.props.mapData.items.map( function (item, i) {
-            console.log(item);
+        const markers = this.props.mapData.items === undefined ? null : this.props.mapData.items.map( (item, i) => {
             return <Marker key={i}
                 title={item.place}
                 name={item.place}
@@ -25,7 +24,7 @@ export class MapRender extends Component {
                 initialCenter={coords}
                 google={this.props.google}
                 style={{width: 500, height: 500, position: 'relative'}}
-                zoom={14}
+                zoom={10}
             >
                 <Circle
                     radius={radius}
